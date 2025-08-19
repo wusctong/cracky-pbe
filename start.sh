@@ -14,7 +14,9 @@ sed "s/__PORT__/$PORT/g" /app/config.template.yml > /app/config.yml
 echo "Using PORT=$PORT"
 cat /app/config.yml
 
+echo "Starting fake HTTP server on port $HTTP_FAKE_PORT for Render health check..."
+nohup bash -c "while true; do echo -e 'HTTP/1.1 200 OK\n\nok' | nc -l -p $HTTP_FAKE_PORT; done" &
+
 # 启动 Gate
 exec /usr/local/bin/gate -c /app/config.yml &
-busybox httpd -f -p 8080 &
 wait
