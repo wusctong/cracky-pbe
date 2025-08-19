@@ -6,6 +6,7 @@ if [ -z "$PORT" ]; then
   exit 1
 fi
 
+rm -f /app/config.yml
 # 使用 sed 替换 __PORT__ 为实际端口
 sed "s/__PORT__/$PORT/g" /app/config.template.yml > /app/config.yml
 
@@ -14,4 +15,4 @@ echo "Using PORT=$PORT"
 cat /app/config.yml
 
 # 启动 Gate
-exec /usr/local/bin/gate --config /app/config.yml
+exec /usr/local/bin/gate -c /app/config.yml
