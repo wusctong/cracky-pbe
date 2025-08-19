@@ -4,11 +4,8 @@ bind: 0.0.0.0:__PORT__
 onlineMode: true
 
 # Backend servers
-servers:
-  hypixel:
-    address: mc.hypixel.net:25565
-    motd: "Hypixel via Gate"
-    version: "auto"
+servers: 
+ hypixel: mc.hypixel.net:25565
 
 # Default try order
 try:
@@ -22,7 +19,7 @@ status:
   showMaxPlayers: 1000
   favicon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAA...
   logPingRequests: false
-  announceForge: false
+  announceForge: true
 
 # Lite mode (full proxy enabled)
 lite:
