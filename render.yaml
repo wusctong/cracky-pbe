@@ -1,5 +1,5 @@
 services:
-  - type: private  # 注意这里是 private，不是 web
+  - type: pserv  # 注意这里是 private，不是 web
     name: cracky-pbe
     env: docker
     autoDeploy: true
