@@ -1,22 +1,37 @@
 java:
   bind: 0.0.0.0:${PORT}
   onlineMode: true
-  
+
+  # 后端服务器列表：注意这里只能写 "名字: 地址"
   servers:
-    hypixel: "mc.hypixel.net:25565"
-    # backup: "mc.example.com:25565"   # 需要可以再加
-    
+    hypixel: mc.hypixel.net:25565
+
+  # 默认尝试顺序：只写名字
   try:
     - hypixel
-    
+
+  # MOTD / 状态信息
   status:
     motd: |
       §bGate Proxy
       §bPowered by MineKube
     showMaxPlayers: 2025
-    announceForge: true
-    
-  # 其他可选项……
+
+  # Lite 模式关掉
   lite:
     enabled: false
-    
+
+  # 转发模式
+  forwarding:
+    mode: legacy
+
+  proxyProtocol: false
+  compression:
+    threshold: 256
+    level: -1
+  connectionTimeout: 5s
+  readTimeout: 30s
+  failoverOnUnexpectedServerDisconnect: true
+  onlineModeKickExistingPlayers: false
+  debug: false
+  verbosity: 0
