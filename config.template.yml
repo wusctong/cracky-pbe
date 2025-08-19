@@ -9,6 +9,10 @@ config:
   # 默认尝试顺序：只写名字
   try:
     - hypixel
+  
+  routes:
+    - match: ".*"       # 匹配所有玩家
+      servers: [hypixel]
 
   # MOTD / 状态信息
   status:
@@ -35,3 +39,4 @@ config:
   onlineModeKickExistingPlayers: false
   debug: false
   verbosity: 0
+  
