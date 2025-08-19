@@ -8,7 +8,7 @@ config:
   # Backend servers configuration
   servers:
     hypixel:
-      address: mc.hypixel.net:25565
+      address: "mc.hypixel.net:25565"
       motd: "Hypixel via Gate"
       version: "auto"
 
