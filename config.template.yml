@@ -12,7 +12,7 @@ servers:
 
 # Default try order
 try:
-  - hypixel: mc.hypixel.net:25565
+  - hypixel
 
 # Status / MOTD
 status:
