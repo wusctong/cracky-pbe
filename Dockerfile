@@ -1,19 +1,22 @@
-# 第一阶段：构建
-FROM golang:1.21 AS builder
-RUN apt-get update && apt-get install -y git bash
-WORKDIR /app
-ENV GO111MODULE=on
-RUN go install go.minekube.com/gate@latest
+# 使用轻量级 Alpine 镜像
+FROM alpine:latest
 
-# 第二阶段：轻量运行
-FROM debian:bookworm-slim
-RUN apt-get update && apt-get install -y bash ca-certificates
-COPY --from=builder /go/bin/gate /usr/local/bin/gate
+# 安装 bash 和 ca-certificates（Gate 可能需要 TLS 支持）
+RUN apk add --no-cache bash ca-certificates
+
+# 复制本地下载好的 Gate 二进制到容器
+COPY gate /usr/local/bin/gate
+RUN chmod +x /usr/local/bin/gate
+
+# 设置工作目录
 WORKDIR /app
+
+# 确保 gate 可执行文件在 PATH
 ENV PATH="/usr/local/bin:${PATH}"
 
 # 配置启动命令，指定WebSocket绑定端口和默认后端服务器
-CMD sh -c "/gate --ws.bind :$PORT --lite.default_backend mc.hypixel.net:25565"
+# CMD sh -c "gate --ws.bind :$PORT --lite.default_backend mc.hypixel.net:25565"
+CMD ["sh", "-c", "gate --ws.bind :${PORT} --lite.default_backend mc.hypixel.net:25565"]
 
 # 暴露WebSocket服务端口
 EXPOSE $PORT
