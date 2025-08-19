@@ -1,10 +1,13 @@
-bind: 0.0.0.0:25565
+# config.yml
 
-# 开启 WebSocket 监听
-websocket:
-  enabled: true
-  bind: 0.0.0.0:8080
+# WebSocket 监听端口，Render 会自动注入 $PORT
+listen:
+  websocket: "${PORT}"
 
-lite:
-  default_backend: mc.hypixel.net:25565
+# 默认 Minecraft 后端
+backend:
+  default: "mc.hypixel.net:25565"
 
+# 可选：日志和调试
+debug: false
+verbosity: 0
