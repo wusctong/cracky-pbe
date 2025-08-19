@@ -5,7 +5,10 @@ onlineMode: true
 
 # Backend servers
 servers: 
- hypixel: mc.hypixel.net:25565
+  hypixel: 
+    address: mc.hypixel.net:25565
+    motd: "Hypixel via Gate"
+    version: "auto"
 
 # Default try order
 try:
@@ -46,3 +49,4 @@ query:
   enabled: false
   port: 25577
   showPlugins: false
+  
