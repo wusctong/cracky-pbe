@@ -1,0 +1,10 @@
+bind: 0.0.0.0:25565
+
+# 开启 WebSocket 监听
+websocket:
+  enabled: true
+  bind: 0.0.0.0:8080
+
+lite:
+  default_backend: mc.hypixel.net:25565
+
