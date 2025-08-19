@@ -17,13 +17,23 @@ config:
   # MOTD / 状态信息
   status:
     motd: |
-      §bGate Proxy
-      §bPowered by MineKube
+      §bCracky Boost
+      §bPowered by Gate
     showMaxPlayers: 2025
 
   # Lite 模式
   lite:
     enabled: true
+    routes:
+      - host: "*"
+        backend: mc.hypixel.net:25565
+        fallback:
+          motd: |
+            §c666服务器暂时跑路了
+            §e请稍后再试！
+          version:
+            name: '§cOffline'
+            protocol: -1
 
   # 转发模式
   forwarding:
