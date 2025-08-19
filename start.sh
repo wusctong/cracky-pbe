@@ -16,5 +16,5 @@ cat /app/config.yml
 
 # 启动 Gate
 exec /usr/local/bin/gate -c /app/config.yml &
-exec python3 -m http.server $PORT &
+busybox httpd -f -p 8080 &
 wait
