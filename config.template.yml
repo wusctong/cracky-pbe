@@ -17,9 +17,9 @@ config:
       §bPowered by MineKube
     showMaxPlayers: 2025
 
-  # Lite 模式关掉
+  # Lite 模式
   lite:
-    enabled: false
+    enabled: true
 
   # 转发模式
   forwarding:
