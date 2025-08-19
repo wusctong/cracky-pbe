@@ -1,52 +1,22 @@
-# Gate proxy configuration template
-
-bind: 0.0.0.0:__PORT__
-onlineMode: true
-
-# Backend servers
-servers: 
-  hypixel: 
-    address: mc.hypixel.net:25565
-    motd: "Hypixel via Gate"
-    version: "auto"
-
-# Default try order
-try:
-  - hypixel
-
-# Status / MOTD
-status:
-  motd: |
-    §bGate Proxy
-    §bPowered by MineKube
-  showMaxPlayers: 2025
-  favicon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAA...
-  logPingRequests: false
-  announceForge: true
-
-# Lite mode (full proxy enabled)
-lite:
-  enabled: false
-
-# Forwarding / proxy protocol
-forwarding:
-  mode: legacy
-
-proxyProtocol: false
-
-compression:
-  threshold: 256
-  level: -1
-connectionTimeout: 5s
-readTimeout: 30s
-failoverOnUnexpectedServerDisconnect: true
-onlineModeKickExistingPlayers: false
-
-debug: false
-verbosity: 0
-
-query:
-  enabled: false
-  port: 25577
-  showPlugins: false
+java:
+  bind: 0.0.0.0:${PORT}
+  onlineMode: true
   
+  servers:
+    hypixel: "mc.hypixel.net:25565"
+    # backup: "mc.example.com:25565"   # 需要可以再加
+    
+  try:
+    - hypixel
+    
+  status:
+    motd: |
+      §bGate Proxy
+      §bPowered by MineKube
+    showMaxPlayers: 2025
+    announceForge: true
+    
+  # 其他可选项……
+  lite:
+    enabled: false
+    
