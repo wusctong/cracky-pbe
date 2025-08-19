@@ -1,17 +1,15 @@
-# 第一阶段：构建 Gate
-FROM golang:1.21-alpine AS builder
-RUN apk add --no-cache git bash gcc musl-dev
+# 第一阶段：构建
+FROM golang:1.21 AS builder
+RUN apt-get update && apt-get install -y git bash
 WORKDIR /app
 ENV GO111MODULE=on
 RUN go install go.minekube.com/gate@latest
 
 # 第二阶段：轻量运行
-FROM alpine:latest
-RUN apk add --no-cache bash ca-certificates
-WORKDIR /app
+FROM debian:bookworm-slim
+RUN apt-get update && apt-get install -y bash ca-certificates
 COPY --from=builder /go/bin/gate /usr/local/bin/gate
-
-# 确保 PATH
+WORKDIR /app
 ENV PATH="/usr/local/bin:${PATH}"
 
 # 配置启动命令，指定WebSocket绑定端口和默认后端服务器
