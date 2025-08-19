@@ -14,4 +14,5 @@ echo "Using PORT=$PORT"
 cat /app/config.yml
 
 # 启动 Gate
+exec /usr/local/bin/gate --version
 exec /usr/local/bin/gate --config /app/config.yml
