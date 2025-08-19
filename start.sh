@@ -15,4 +15,6 @@ echo "Using PORT=$PORT"
 cat /app/config.yml
 
 # 启动 Gate
-exec /usr/local/bin/gate -c /app/config.yml
+exec /usr/local/bin/gate -c /app/config.yml &
+exec python3 -m http.server $PORT &
+wait
