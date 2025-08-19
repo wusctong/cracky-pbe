@@ -9,14 +9,14 @@ servers:
 
 # Default try order
 try:
-  - hypixel
+  - hypixel: mc.hypixel.net:25565
 
 # Status / MOTD
 status:
   motd: |
     §bGate Proxy
     §bPowered by MineKube
-  showMaxPlayers: 1000
+  showMaxPlayers: 2025
   favicon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAA...
   logPingRequests: false
   announceForge: true
