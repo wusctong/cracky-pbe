@@ -16,7 +16,8 @@ cat /app/config.yml
 
 sh -c "
 while true; do
-  echo -e 'HTTP/1.1 200 OK\n\nok' | nc -l -p $HTTP_FAKE_PORT -q 1
+  # 每次监听连接，收到后发送 HTTP 响应，然后关闭
+  { echo 'HTTP/1.1 200 OK'; echo; echo 'ok'; } | nc -l -p $HTTP_FAKE_PORT
 done
 " &
 
