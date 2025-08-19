@@ -1,63 +1,63 @@
 # Gate proxy configuration template
-config:
-  # Bind address for Minecraft client connections (use dynamic port for Render)
-  bind: 0.0.0.0:$PORT
 
-  onlineMode: true
+# Bind address for Minecraft client connections
+bind: 0.0.0.0:${PORT}
 
-  # Backend servers configuration
-  servers:
-    hypixel:
-      address: mc.hypixel.net:25565
-      motd: "Hypixel via Gate"
-      version: "auto"
+onlineMode: true
 
-  # Default try order when players login
-  try:
-    - hypixel
+# Backend servers configuration
+servers:
+  hypixel:
+    address: mc.hypixel.net:25565
+    motd: "Hypixel via Gate"
+    version: "auto"
 
-  # Status (server list ping) settings
-  status:
-    motd: |
-      §bGate Proxy
-      §bPowered by MineKube
-    showMaxPlayers: 1000
-    favicon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAA...
-    logPingRequests: false
-    announceForge: false
+# Default try order when players login
+try:
+  - hypixel
 
-  # Lite mode (full proxy features enabled)
-  lite:
-    enabled: false
+# Status (server list ping) settings
+status:
+  motd: |
+    §bGate Proxy
+    §bPowered by MineKube
+  showMaxPlayers: 1000
+  favicon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAA...
+  logPingRequests: false
+  announceForge: false
 
-  # Forwarding / proxy protocol
-  forwarding:
-    mode: legacy
-    #velocitySecret: secret_here
-    #bungeeGuardSecret: secret_here
+# Lite mode (full proxy features enabled)
+lite:
+  enabled: false
 
-  proxyProtocol: false
+# Forwarding / proxy protocol
+forwarding:
+  mode: legacy
+  #velocitySecret: secret_here
+  #bungeeGuardSecret: secret_here
 
-  # Compression & timeouts
-  compression:
-    threshold: 256
-    level: -1
-  connectionTimeout: 5s
-  readTimeout: 30s
-  failoverOnUnexpectedServerDisconnect: true
-  onlineModeKickExistingPlayers: false
+proxyProtocol: false
 
-  # Debug & verbosity
-  debug: false
-  verbosity: 0
+# Compression & timeouts
+compression:
+  threshold: 256
+  level: -1
+connectionTimeout: 5s
+readTimeout: 30s
+failoverOnUnexpectedServerDisconnect: true
+onlineModeKickExistingPlayers: false
 
-  # Query protocol (optional)
-  query:
-    enabled: false
-    port: 25577
-    showPlugins: false
+# Debug & verbosity
+debug: false
+verbosity: 0
 
-  # HTTP API
-  api:
-    enabled: false
-    bind: 0.0.0.0:8080
+# Query protocol (optional)
+query:
+  enabled: false
+  port: 25577
+  showPlugins: false
+
+# HTTP API
+api:
+  enabled: false
+  bind: 0.0.0.0:8080
