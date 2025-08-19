@@ -1,5 +1,4 @@
 FROM ghcr.io/minekube/gate:latest
-FROM alpine:latest
 
 # Render 会覆盖 PORT
 # ENV PORT=8080
