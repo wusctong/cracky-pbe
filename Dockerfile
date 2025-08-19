@@ -6,6 +6,7 @@ RUN apk add --no-cache bash ca-certificates
 
 # 复制本地下载好的 Gate 二进制到容器
 COPY gate /usr/local/bin/gate
+COPY config.yml /app/config.yml
 RUN chmod +x /usr/local/bin/gate
 
 # 设置工作目录
@@ -16,7 +17,7 @@ ENV PATH="/usr/local/bin:${PATH}"
 
 # 配置启动命令，指定WebSocket绑定端口和默认后端服务器
 # CMD sh -c "gate --ws.bind :$PORT --lite.default_backend mc.hypixel.net:25565"
-CMD ["sh", "-c", "gate --config ./config.yml"]
+CMD ["sh", "-c", "gate --config /app/config.yml"]
 
 # 暴露WebSocket服务端口
 EXPOSE $PORT
