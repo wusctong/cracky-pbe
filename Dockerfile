@@ -1,4 +1,4 @@
-FROM golang:1.22 AS build
+FROM golang:1.23 AS build
 RUN go install github.com/minekube/gate/cmd/gate@latest
 
 FROM debian:bookworm-slim
