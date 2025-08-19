@@ -1,13 +1,13 @@
-# 第一阶段：构建 Gate
-FROM golang:1.21-alpine AS builder
-RUN apk add --no-cache git bash
-WORKDIR /app
-ENV GO111MODULE=on
-RUN go install go.minekube.com/gate@latest
+# 基于官方Gate镜像作为基础
+FROM ghcr.io/minekube/gate:latest
 
-# 第二阶段：轻量运行镜像
-FROM alpine:latest
-RUN apk add --no-cache bash ca-certificates
-COPY --from=builder /go/bin/gate /usr/local/bin/gate
+# 设置工作目录（可选，根据需要调整）
 WORKDIR /app
-CMD sh -c "gate --ws.bind :$PORT --lite.default_backend mc.hypixel.net:25565"
+
+# 配置启动命令，指定WebSocket绑定端口和默认后端服务器
+# 使用ENTRYPOINT和CMD组合，方便后续运行时修改参数
+ENTRYPOINT ["sh", "-c"]
+CMD ["gate --ws.bind :$PORT --lite.default_backend mc.hypixel.net:25565"]
+
+# 暴露WebSocket服务端口
+EXPOSE $PORT
