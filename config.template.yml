@@ -1,7 +1,7 @@
 # Gate proxy configuration template
 
 # Bind address for Minecraft client connections
-bind: 0.0.0.0:${PORT}
+bind: 0.0.0.0:$PORT
 
 onlineMode: true
 
