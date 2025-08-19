@@ -1,6 +1,3 @@
 FROM ghcr.io/minekube/gate:latest
 
-# 拷贝配置
-COPY config.yml /app/config.yml
-WORKDIR /app
-CMD ["gate", "--config", "/app/config.yml"]
+CMD ["gate", "--lite.default_backend", "mc.hypixel.net:25565", "--ws.bind", ":8080"]
