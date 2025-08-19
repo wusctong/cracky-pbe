@@ -1,7 +1,7 @@
 # Gate proxy configuration template
 config:
   # Bind address for Minecraft client connections (use dynamic port for Render)
-  bind: 0.0.0.0:${PORT}
+  bind: 0.0.0.0:$PORT
 
   onlineMode: true
 
