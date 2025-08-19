@@ -2,7 +2,7 @@
 FROM alpine:latest
 
 # 安装 bash 和 ca-certificates（Gate 可能需要 TLS 支持）
-RUN apk add --no-cache bash ca-certificates
+RUN apk add --no-cache bash ca-certificates gettext
 
 # 复制本地下载好的 Gate 二进制到容器
 COPY gate /usr/local/bin/gate
