@@ -49,7 +49,3 @@ query:
   enabled: false
   port: 25577
   showPlugins: false
-
-api:
-  enabled: false
-  bind: 0.0.0.0:8080
