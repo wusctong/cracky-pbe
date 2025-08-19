@@ -1,63 +1,63 @@
 # Gate proxy configuration template
+config:
+  # Bind address for Minecraft client connections (use dynamic port for Render)
+  bind: 0.0.0.0:__PORT__
 
-# Bind address for Minecraft client connections
-bind: 0.0.0.0:$PORT
+  onlineMode: true
 
-onlineMode: true
+  # Backend servers configuration
+  servers:
+    hypixel:
+      address: mc.hypixel.net:25565
+      motd: "Hypixel via Gate"
+      version: "auto"
 
-# Backend servers configuration
-servers:
-  hypixel:
-    address: mc.hypixel.net:25565
-    motd: "Hypixel via Gate"
-    version: "auto"
+  # Default try order when players login
+  try:
+    - hypixel
 
-# Default try order when players login
-try:
-  - hypixel
+  # Status (server list ping) settings
+  status:
+    motd: |
+      §bGate Proxy
+      §bPowered by MineKube
+    showMaxPlayers: 1000
+    favicon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAA...
+    logPingRequests: false
+    announceForge: false
 
-# Status (server list ping) settings
-status:
-  motd: |
-    §bGate Proxy
-    §bPowered by MineKube
-  showMaxPlayers: 1000
-  favicon: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAA...
-  logPingRequests: false
-  announceForge: false
+  # Lite mode (full proxy features enabled)
+  lite:
+    enabled: false
 
-# Lite mode (full proxy features enabled)
-lite:
-  enabled: false
+  # Forwarding / proxy protocol
+  forwarding:
+    mode: legacy
+    #velocitySecret: secret_here
+    #bungeeGuardSecret: secret_here
 
-# Forwarding / proxy protocol
-forwarding:
-  mode: legacy
-  #velocitySecret: secret_here
-  #bungeeGuardSecret: secret_here
+  proxyProtocol: false
 
-proxyProtocol: false
+  # Compression & timeouts
+  compression:
+    threshold: 256
+    level: -1
+  connectionTimeout: 5s
+  readTimeout: 30s
+  failoverOnUnexpectedServerDisconnect: true
+  onlineModeKickExistingPlayers: false
 
-# Compression & timeouts
-compression:
-  threshold: 256
-  level: -1
-connectionTimeout: 5s
-readTimeout: 30s
-failoverOnUnexpectedServerDisconnect: true
-onlineModeKickExistingPlayers: false
+  # Debug & verbosity
+  debug: false
+  verbosity: 0
 
-# Debug & verbosity
-debug: false
-verbosity: 0
+  # Query protocol (optional)
+  query:
+    enabled: false
+    port: 25577
+    showPlugins: false
 
-# Query protocol (optional)
-query:
-  enabled: false
-  port: 25577
-  showPlugins: false
-
-# HTTP API
-api:
-  enabled: false
-  bind: 0.0.0.0:8080
+  # HTTP API
+  api:
+    enabled: false
+    bind: 0.0.0.0:8080
