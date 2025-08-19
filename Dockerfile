@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/minekube/gate:latest
+FROM ghcr.io/minekube/gate:latest
 
 ENV PORT=8080
 
