@@ -1,5 +1,6 @@
 # 基于官方Gate镜像作为基础
 FROM ghcr.io/minekube/gate:latest
+FROM alpine:latest
 
 # 设置工作目录（可选，根据需要调整）
 WORKDIR /app
