@@ -1,0 +1,10 @@
+# config.yml
+
+listen:
+  websocket: "__PORT__"
+
+backend:
+  default: "mc.hypixel.net:25565"
+
+debug: false
+verbosity: 0

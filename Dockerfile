@@ -1,23 +1,18 @@
-# 使用轻量级 Alpine 镜像
 FROM alpine:latest
 
-# 安装 bash 和 ca-certificates（Gate 可能需要 TLS 支持）
-RUN apk add --no-cache bash ca-certificates gettext
+# 安装 bash 和 ca-certificates
+RUN apk add --no-cache bash ca-certificates
 
-# 复制本地下载好的 Gate 二进制到容器
+# 复制 Gate 二进制和模板配置文件
 COPY gate /usr/local/bin/gate
-COPY config.yml /app/config.yml
+COPY config.template.yml /app/config.template.yml
 RUN chmod +x /usr/local/bin/gate
 
-# 设置工作目录
 WORKDIR /app
-
-# 确保 gate 可执行文件在 PATH
 ENV PATH="/usr/local/bin:${PATH}"
 
-# 配置启动命令，指定WebSocket绑定端口和默认后端服务器
-# CMD sh -c "gate --ws.bind :$PORT --lite.default_backend mc.hypixel.net:25565"
-CMD ["sh", "-c", "envsubst < /app/config.yml > /app/config_render.yml && gate --config /app/config_render.yml"]
+# 使用启动脚本动态生成 config.yml 并启动 Gate
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
-# 暴露WebSocket服务端口
-EXPOSE $PORT
+CMD ["/app/start.sh"]
