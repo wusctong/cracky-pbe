@@ -1,0 +1,11 @@
+services:
+  - type: private  # 注意这里是 private，不是 web
+    name: cracky-pbe
+    env: docker
+    autoDeploy: true
+    plan: free
+    dockerfilePath: ./Dockerfile
+    disk:
+      name: data
+      mountPath: /app/data
+      sizeGB: 1
