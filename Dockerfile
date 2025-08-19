@@ -5,9 +5,7 @@ FROM ghcr.io/minekube/gate:latest
 WORKDIR /app
 
 # 配置启动命令，指定WebSocket绑定端口和默认后端服务器
-# 使用ENTRYPOINT和CMD组合，方便后续运行时修改参数
-ENTRYPOINT ["sh", "-c"]
-CMD ["gate --ws.bind :$PORT --lite.default_backend mc.hypixel.net:25565"]
+CMD sh -c "gate --ws.bind :$PORT --lite.default_backend mc.hypixel.net:25565"
 
 # 暴露WebSocket服务端口
 EXPOSE $PORT
