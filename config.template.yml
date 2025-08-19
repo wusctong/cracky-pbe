@@ -1,5 +1,3 @@
-# config.yml
-
 listen:
   websocket: "__PORT__"
 

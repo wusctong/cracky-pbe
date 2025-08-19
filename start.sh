@@ -1,8 +1,12 @@
 #!/bin/bash
-# 如果 PORT 没设置，使用默认 25565
-PORT=${PORT:-25565}
 
-# 替换模板里的 __PORT__ 为实际端口
+# 确保 PORT 有值
+if [ -z "$PORT" ]; then
+  echo "Error: PORT environment variable not set"
+  exit 1
+fi
+
+# 替换占位符生成 config.yml
 sed "s/__PORT__/${PORT}/g" /app/config.template.yml > /app/config.yml
 
 # 启动 Gate
