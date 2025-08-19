@@ -14,12 +14,9 @@ sed "s/__PORT__/$PORT/g" /app/config.template.yml > /app/config.yml
 echo "Using PORT=$PORT"
 cat /app/config.yml
 
-sh -c "
 while true; do
-  # 每次监听连接，收到后发送 HTTP 响应，然后关闭
-  { echo 'HTTP/1.1 200 OK'; echo; echo 'ok'; } | nc -l -p $HTTP_FAKE_PORT
-done
-" &
+  { echo "HTTP/1.1 200 OK"; echo; echo "ok"; } | nc -l -p 8080
+done &
 
 # 启动 Gate
 exec /usr/local/bin/gate -c /app/config.yml &
