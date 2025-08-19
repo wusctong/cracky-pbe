@@ -1,5 +1,5 @@
 config:
-  bind: 0.0.0.0:${PORT}
+  bind: 0.0.0.0:__PORT__
   onlineMode: true
 
   # 后端服务器列表：注意这里只能写 "名字: 地址"
