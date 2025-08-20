@@ -15,7 +15,7 @@ echo "Using PORT=$PORT"
 cat /app/config.yml
 
 while true; do
-  { echo "HTTP/1.1 200 OK"; echo; echo "ok"; } | nc -l -p 8080
+  { echo "HTTP/1.1 200 OK"; echo; echo "ok"; } | nc -l -p $PORT
 done &
 
 # 启动 Gate
